@@ -41,6 +41,12 @@ namespace ProductService.Controllers
                 Id = 3,
                 Name = "Keyboard",
                 Price = 2000
+            },
+             new Product
+            {
+                Id = 3,
+                Name = "Keyboard",
+                Price = 2000
             }
         };
 
