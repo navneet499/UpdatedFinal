@@ -47,6 +47,12 @@ namespace ProductService.Controllers
                 Id = 3,
                 Name = "Keyboard",
                 Price = 2100
+            },
+              new Product
+            {
+                Id = 5,
+                Name = "Mouse",
+                Price = 2155
             }
         };
 
