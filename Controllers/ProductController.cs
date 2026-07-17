@@ -1,69 +1,80 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using MyWebApiApp.Controllers.Data;
 using MyWebApiApp.Models;
 
 
-namespace ProductService.Controllers
+namespace MyWebApiApp.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ProductController : ControllerBase
+    public class ProductsController : ControllerBase
     {
-        public ProductController()
+        private readonly AppDbContext _context;
+
+        public ProductsController(AppDbContext context)
         {
-            
+            _context = context;
         }
+
+        // GET
         [HttpGet]
-        [Route("ProductsList")]
-        public IActionResult GetProductsList()
-         {
-        var products = new List<Product>
+        public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
-            new Product
-            {
-                Id = 1,
-                Name = "Laptop",
-                Price = 50000
-            },
+            return await _context.Products.ToListAsync();
+        }
 
-            new Product
-            {
-                Id = 2,
-                Name = "Mobile",
-                Price = 30000
-            },
+        // GET BY ID
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Product>> GetProduct(int id)
+        {
+            var product = await _context.Products.FindAsync(id);
 
-            new Product
-            {
-                Id = 3,
-                Name = "Keyboard",
-                Price = 2000
-            },
-             new Product
-            {
-                Id = 3,
-                Name = "Keyboard",
-                Price = 2100
-            },
-              new Product
-            {
-                Id = 5,
-                Name = "Mouse 11:03",
-                Price = 2155
-            },
-              new Product
-            {
-                Id = 6,
-                Name = "Keyboard",
-                Price = 2155
-            }
-        };
+            if (product == null)
+                return NotFound();
 
-        return Ok(products);
-        //return new OkObjectResult(products); roslyn doest no ok it converts into class OkObjectResult
-    }
+            return product;
+        }
+
+        // POST
+        [HttpPost]
+        public async Task<ActionResult<Product>> Create(Product product)
+        {
+            _context.Products.Add(product);
+
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
+        }
+
+        // PUT
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, Product product)
+        {
+            if (id != product.Id)
+                return BadRequest();
+
+            _context.Entry(product).State = EntityState.Modified;
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        // DELETE
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var product = await _context.Products.FindAsync(id);
+
+            if (product == null)
+                return NotFound();
+
+            _context.Products.Remove(product);
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }
