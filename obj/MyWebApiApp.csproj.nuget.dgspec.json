@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\MyWebApiApp\\src\\MyWebApiApp\\MyWebApiApp.csproj": {}
+    "C:\\MyWebApiApp\\src\\MyWebApiApp\\MyWebApiApp.csproj": {}
   },
   "projects": {
-    "c:\\MyWebApiApp\\src\\MyWebApiApp\\MyWebApiApp.csproj": {
+    "C:\\MyWebApiApp\\src\\MyWebApiApp\\MyWebApiApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\MyWebApiApp\\src\\MyWebApiApp\\MyWebApiApp.csproj",
+        "projectUniqueName": "C:\\MyWebApiApp\\src\\MyWebApiApp\\MyWebApiApp.csproj",
         "projectName": "MyWebApiApp",
-        "projectPath": "c:\\MyWebApiApp\\src\\MyWebApiApp\\MyWebApiApp.csproj",
+        "projectPath": "C:\\MyWebApiApp\\src\\MyWebApiApp\\MyWebApiApp.csproj",
         "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "c:\\MyWebApiApp\\src\\MyWebApiApp\\obj\\",
+        "outputPath": "C:\\MyWebApiApp\\src\\MyWebApiApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -35,3 +35,11 @@ Ocelot(Handson)
 Azure APIM****(Gateway)
 
 
+20 july-
+
+Conclusion-
+Now we have to apply complete dotnet application with functioning 
+
+
+
+
