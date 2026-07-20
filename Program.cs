@@ -18,7 +18,7 @@ var app = builder.Build();
 
 // Configure middleware
 
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsProduction())
 {
     app.UseSwagger();
 
